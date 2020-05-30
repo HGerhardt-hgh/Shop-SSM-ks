@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sise.dao.OrderMapper">
+    <!-- 根据订单号查询订单，返回对象-->
+    <select id="queryOrderByOid" resultType="Order" parameterType="int">
+        select * from orders where order_id=#{order_id}
+    </select>
+     <!--根据用户id查询订单，返回对象-->
+    <select id="queryOrderByUid" resultType="Order" parameterType="int">
+        select * from orders where user_id=#{user_id}
+    </select>
+
+    <!-- 根据商品id查询订单，返回对象 -->
+    <select id="queryOrderByPid" resultType="Order" parameterType="int">
+        select * from orders where p_id=#{p_id}
+    </select>
+    <!--判断添加订单记录是否成功-->
+    <insert id="insertOrder" parameterType="Order">
+        insert into orders (order_id,user_id,p_id,p_name, p_price,cost,user_name, user_phone,order_address ,order_amount,order_time,image)
+        value (#{order_id},#{user_id},#{p_id},#{p_name},#{ p_price},#{cost},#{user_name},#{ user_phone},#{order_address },#{order_amount},#{order_time},#{image})
+    </insert>
+
+
+</mapper>

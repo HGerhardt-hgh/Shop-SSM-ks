@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sise.dao.ProductMapper">
+
+    <insert id="inserProduct" parameterType="Product">
+       insert into product set sup_id = #{sup_id}, p_name = #{p_name}, p_type = #{p_type}, p_price = #{p_price}, p_amount = #{p_amount}, p_description = #{p_description},image1 = #{image1},hot = #{hot}
+
+</insert>
+    <!-- 判断商家删除（下架）商品是否成功 -->
+    <insert id="deleteProduct" parameterType="int" >
+      delete from product where p_id = #{p_id}
+    </insert>
+    <!--判断商家修改商品信息是否成功-->
+    <update id="updateProduct" parameterType="Product">
+          update Product set p_name = #{p_name}, p_type = #{p_type}, p_price = #{p_price}, p_amount = #{p_amount}, p_description = #{p_description} where p_id = #{p_id} and sup_id = #{sup_id}
+    </update>
+
+    <!--根据商品的类型查询商品-->
+    <select id="queryProductByType" parameterType="String" resultType="Product">
+      select * from product where p_type = #{p_type}
+
+   </select>
+
+
+    <!--根据商品的id查询商品-->
+    <select id="queryProductById" parameterType="int" resultType="Product">
+      select * from product where p_id = #{p_id}
+   </select>
+
+    <!--查询热销商品-->
+    <select id="queryProductByIsHot"  resultType="Product">
+#       select * from product where hot = "热销"
+        select * from product where p_id in
+        (select p_id from orders group by p_id order by count(p_id) desc) limit 12;
+   </select>
+
+    <!-- 根据商家id查询商品-->
+    <select id="queryProductBySid" parameterType="int" resultType="com.sise.pojo.Product">
+      select * from product where sup_id = #{sup_id}
+   </select>
+
+</mapper>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sise.dao.SupplierMapper">
+    <insert id="insertSupplier" parameterType="Supplier">
+        insert into supplier (sup_name, sup_phone, sup_number, sup_password, sup_address, sup_email, sup_registTime,
+                              sup_description)
+            value (#{sup_name}, #{sup_phone}, #{sup_number}, #{sup_password}, #{sup_address}, #{sup_email},
+                   #{sup_registTime}, #{sup_description})
+    </insert>
+
+    <update id="updateSupplier" parameterType="Supplier">
+        update supplier
+        set sup_name=#{sup_name},
+            sup_phone=#{sup_phone},
+            sup_address=#{sup_address},
+            sup_email=#{sup_email},
+            sup_description=#{sup_description}
+        where sup_id = #{sup_id}
+    </update>
+
+<select id="querySupplier" resultType="Supplier">
+    select * from supplier where sup_number = #{usernumber} and sup_password = #{password}
+</select>
+
+    <select id="querySupplierById"  parameterType="int" resultType="Supplier">
+        select * from supplier where sup_id = #{sup_id}
+    </select>
+</mapper>

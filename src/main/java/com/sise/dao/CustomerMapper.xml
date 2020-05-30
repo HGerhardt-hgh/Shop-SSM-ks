@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sise.dao.CustomerMapper">
+
+   <select id="queryCustomer" resultType="Customer" >
+        select * from Customer where user_number = #{user_number} and user_password = #{user_password}
+   </select>
+    <select id="queryCustomerById" parameterType="int" resultType="Customer">
+        select * from Customer where user_id = #{user_id}
+    </select>
+    <insert id="insertCustomer" parameterType="Customer">
+        insert into Customer (user_name, user_sex, user_phone,user_number,user_password,user_address,user_Email,user_registtime)
+        value (#{user_name},#{user_sex},#{user_phone},#{user_number},#{user_password},#{user_address},#{user_Email},#{user_registtime})
+    </insert>
+   <update id="updateCustomer" parameterType="Customer">
+       update Customer set user_name = #{user_name}, user_phone = #{user_phone},user_address = #{user_address},user_Email = #{user_Email} where user_id = #{user_id }
+
+   </update>
+
+</mapper>

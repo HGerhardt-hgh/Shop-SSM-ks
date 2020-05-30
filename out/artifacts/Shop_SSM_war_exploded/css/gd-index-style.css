@@ -1,0 +1,59 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+	margin:0px;
+	padding:0px;
+	}
+
+#shix input{float:right;}
+td{
+	width:520px;
+	height:180px;
+	border:2px solid green;
+	}
+.row1{float:left;}
+.row2{float:left;}
+ul{list-style:none;}
+.slideShow{
+    width: 920px;
+    height: 420px;     /*其实就是框架的高度*/
+    position: relative;
+    overflow: hidden;    /*此处需要将溢出框架的图片部分隐藏*/
+}
+.slideShow ul{
+    width: 4600px;
+    position: relative;     /*此处需注意relative : 对象不可层叠，但将依据left，right，top，bottom等属性在正常文档流中偏移位置，如果没有这个属性，图片将不可左右移动*/
+}
+.slideShow ul li{
+    float: left;     /*让四张图片左浮动，形成并排的横着布局，方便点击按钮时的左移动*/
+    width: 1020px;	/*图片之间的间隔*/
+}
+.slideShow .showNav{     /*用绝对定位给数字按钮进行布局*/
+	position: absolute;
+	left: 793px;
+	top: 376px;
+	text-align: center;
+	font-size: 12px;
+	line-height: 20px;
+}
+.slideShow .showNav span{/*按钮样式*/
+    cursor: pointer;
+    display: block;
+    float: left;
+    width: 20px;
+    height: 20px;
+    background: #ff5a28;
+    margin-left: 2px;
+    color: #fff;
+}
+.slideShow .showNav .active{/*按钮触发后样式*/
+    background: #b63e1a;
+}
+#shix{
+	border:2px solid red;
+	width:520px;
+	height:25px;
+
+
+}
+

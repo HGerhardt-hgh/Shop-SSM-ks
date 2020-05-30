@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 设置别名-->
+    <typeAliases>
+        <package name="com.sise.pojo"/>
+    </typeAliases>
+
+    <!-- 映射文件 -->
+    <mappers>
+        <mapper resource="com/sise/dao/ProductMapper.xml"/>
+        <mapper resource="com/sise/dao/CustomerMapper.xml"/>
+        <mapper resource="com/sise/dao/OrderMapper.xml"/>
+        <mapper resource="com/sise/dao/SupplierMapper.xml"/>
+    </mappers>
+</configuration>
